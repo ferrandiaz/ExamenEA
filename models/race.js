@@ -6,10 +6,6 @@ var Tour = new Schema({
     Ltd: {type: Number}
 });
 
-var Tags = new Schema({
-    Tag: {type: String}
-});
-
 var Users = new Schema({
     Username: {type:String}
 });
@@ -31,8 +27,6 @@ var raceSchema = new Schema({
         Ltd: {type: Number}
     },
     Distance: {type: Number},
-    Type: {type: String},
-    Tags: [Tags],
     Users: [Users],
     Messages: [Message],
     Tour: [Tour]
