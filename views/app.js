@@ -5,8 +5,6 @@ function mainController($scope, $http) {
     $scope.objects = {};
     $scope.selected = false;
 
-
-    //GET LISTA
     $http.get('http://localhost:3000/examen/').success(function(data) {
 
         $scope.objects = data;
@@ -15,12 +13,9 @@ function mainController($scope, $http) {
         .error(function(data) {
             console.log('Error: ' + data);
         });
-
-    //DELETE element
     $scope.deleteObject = function(newObject) {
         $http.delete('http://localhost:3000/examen/' + $scope.newObject.Name)
             .success(function(data) {
-                //Borramos los datos añadidos en los imput boxes
                 $scope.newObject = {};
                 $scope.selected = false;
                 $scope.objects = null;
@@ -39,8 +34,6 @@ function mainController($scope, $http) {
             });
     };
 
-
-    //POST LISTA
     $scope.createObject = function() {
         $http.post('http://localhost:3000/examen/', $scope.newObject)
             .success(function(data) {
@@ -54,7 +47,6 @@ function mainController($scope, $http) {
             });
     };
 
-    //GET LISTA
     $scope.updateObject = function(newObject) {
         console.log(newObject);
         $http.put('http://localhost:3000/examen/' + $scope.newObject.Name, newObject)
@@ -72,7 +64,6 @@ function mainController($scope, $http) {
 
 
 
-    // Función para coger el objeto seleccionado en la tabla
     $scope.selectObject = function(object) {
         $http.get('http://localhost:3000/examen/'+ object.Name).success(function(data) {
             $scope.newObject = data;
